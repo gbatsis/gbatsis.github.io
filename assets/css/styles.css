@@ -1,0 +1,292 @@
+@import 'https://fonts.googleapis.com/css?family=Overlock:400,400i,700|Oleo+Script';
+
+:root {
+    --main-bg-color: #2b2b33;
+    --neuron-bg-color: rgba(255, 255, 255, 0.123);
+    --white-text-1: #f0f0f0;
+    --white-text-2: #fafafa;
+    --white-text-3: #F9F6EE;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    overflow: hidden;
+    background-color: var(--main-bg-color);
+    font-family: 'Overlock', Arial, Helvetica, sans-serif;
+    font-size: calc(15px + 0.390625vw);
+}
+
+main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+/* Adopted from https://codepen.io/iceable/pen/yLBrZOd */
+.bg {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    width: 200%;
+    height: 200vh;
+    background: transparent url('../images/noise-transparent.png') repeat 0 0;
+    background-repeat: repeat;
+    animation: bg-animation .2s infinite;
+    opacity: 0.9;
+    visibility: visible;
+    z-index: -1;
+}
+
+@keyframes bg-animation {
+    0% { transform: translate(0,0) }
+    10% { transform: translate(-5%,-5%) }
+    20% { transform: translate(-10%,5%) }
+    30% { transform: translate(5%,-10%) }
+    40% { transform: translate(-5%,15%) }
+    50% { transform: translate(-10%,5%) }
+    60% { transform: translate(15%,0) }
+    70% { transform: translate(0,10%) }
+    80% { transform: translate(-15%,0) }
+    90% { transform: translate(10%,5%) }
+    100% { transform: translate(5%,0) }
+}
+
+/* ---------------------------------- */
+
+nav ul {
+    list-style: none;
+}
+
+#network {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.layer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 30px;
+}
+
+.neuron {
+    opacity: 0;
+    transform: scale(0);
+    position: relative;
+    z-index: 10;
+    width: 20vw;
+    height: 20vw;
+    max-width: 180px;
+    max-height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid rgba(161, 126, 126, 0.539); 
+    background: var(--neuron-bg-color);
+    backdrop-filter: blur(4.5px);
+    -webkit-backdrop-filter: blur(4.5px);
+}
+
+.neuron #neuron-bg {
+    width: 90%;
+    height: 90%;
+}
+
+#network #connection {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+#network #connection path {
+    animation: drawPath 2s ease-in-out forwards, gradientShift 3s linear infinite;
+}
+
+
+
+@keyframes drawPath {
+    from {
+        stroke-dasharray: 0, 100;
+    }
+    to {
+        stroke-dasharray: 100, 0;
+    }
+}
+
+@keyframes gradientShift {
+    0% {
+        stop-color: #c5d4e6;
+        stop-opacity: 0;
+    }
+    50% {
+        stop-color: #c5d4e6;
+        stop-opacity: 1;
+    }
+    100% {
+        stop-color: #c5d4e6;
+        stop-opacity: 0;
+    }
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    height: 90vh;
+    z-index: 99;
+
+    background: rgba(58, 72, 87, 0.278);
+    box-shadow: 0 8px 32px 0 rgba(23, 47, 29, 0.37);
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+    padding: 20px;      
+}
+
+.uc-content h2 {
+    font-size: 3.5em;
+    color: var(--white-text-3);
+    text-align: center;
+    margin: 20px 0;
+
+    /* Add text effects */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.261);
+}
+
+.uc-content p {
+    font-size: 1.2em;
+    color: var(--white-text-3);
+    text-align: center;
+    margin: 20px 0;
+}
+
+.contact-info{
+    background-color: #c5d4e6;
+
+    /* Alway center the element */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.contact-card {
+    width: fit-content;
+    height: fit-content;
+    margin: 0 auto;
+
+    background-color: rgba(238, 238, 238, 0.142);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 5px;
+    border-radius: 10px;
+    gap: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.055);
+    position: relative;
+  }
+  
+.contactTab {
+    width: 52px;
+    height: 52px;
+    background-color: rgba(44, 44, 44, 0.605);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition-duration: .3s;
+    border-radius: 10px;
+  }
+
+.contact-tab1:hover {
+    background-color: #bb4747;
+    transition-duration: .3s;
+}
+
+.contact-tab2:hover {
+    background-color: #a6ce39;
+    transition-duration: .3s;
+}
+ 
+.contact-tab3:hover {
+    background-color: #0072b1;
+    transition-duration: .3s;
+}
+
+.contact-tab4:hover {
+    background-color: #1e1e1e;
+    transition-duration: .3s;
+}
+  
+.contactTab:active {
+    transform: scale(0.9);
+    transition-duration: .3s;
+  }
+  
+.socialSvg {
+    width: 25px;
+}
+
+.mailIcon{
+    width: 28px;
+}
+
+.orcidIcon{
+    width: 30px;
+}
+
+.githubIcon{
+    width: 28px;
+}
+  
+.socialSvg path {
+    fill: rgb(255, 255, 255);
+}
+  
+.contactTab:hover .socialSvg {
+    animation: slide-in-top 0.3s both;
+}
+  
+@keyframes slide-in-top {
+    0% {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+  
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+}
+  
+  
