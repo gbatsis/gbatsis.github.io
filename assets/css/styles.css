@@ -154,6 +154,8 @@ nav ul {
     }
 }
 
+/* UC Content */
+
 .overlay {
     position: absolute;
     top: 50%;
@@ -171,6 +173,30 @@ nav ul {
     border: 1px solid rgba( 255, 255, 255, 0.18 );
 
     padding: 20px;      
+}
+
+.about{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.about h2 {
+    font-size: 3.5em;
+    color: var(--white-text-3);
+    text-align: center;
+    margin: 20px 0;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.261);
+}
+
+.about p {
+    font-size: 0.9em;
+    color: var(--white-text-3);
+    text-align: center;
+    margin: 20px 0;
+    max-width: 800px;
 }
 
 .uc-content h2 {
